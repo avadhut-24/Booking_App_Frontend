@@ -7,6 +7,7 @@ const adminregister = () => {
     const [name,setName] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
+    const role = "Admin"
     async function registerUser(ev) {
       ev.preventDefault();
       try {
@@ -14,6 +15,8 @@ const adminregister = () => {
           name,
           email,
           password,
+          role
+          
         });
         alert('Registration successful. Now you can log in');
       } catch (e) {

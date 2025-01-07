@@ -1,18 +1,20 @@
 import React from 'react'
 import {Link, Navigate} from "react-router-dom";
 import {useContext, useState} from "react";
+import { UserContext } from '../../UserContext';
 import axios from "axios";
 
  const hostlogin = () => {
   const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const role = "Host";
     const [redirect, setRedirect] = useState(false);
-    // const {setUser} = useContext(UserContext);
+    const {setUser} = useContext(UserContext);
     async function handleLoginSubmit(ev) {
       ev.preventDefault();
       try {
-        const {data} = await axios.post('/login', {email,password});
-        // setUser(data);
+        const {data} = await axios.post('/login', {email,password, role});
+        setUser(data);
         alert('Login successful');
         setRedirect(true);
       } catch (e) {
@@ -21,7 +23,7 @@ import axios from "axios";
     }
   
     if (redirect) {
-      return <Navigate to={'/'} />
+      return <Navigate to={'/index'} />
     }
 
   return (

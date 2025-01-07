@@ -7,13 +7,16 @@ const hostregister = () => {
     const [name,setName] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
+    
     async function registerUser(ev) {
+      const role = "Host";
       ev.preventDefault();
       try {
         await axios.post('/register', {
           name,
           email,
           password,
+          role,
         });
         alert('Registration successful. Now you can log in');
       } catch (e) {
