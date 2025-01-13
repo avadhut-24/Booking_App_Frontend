@@ -80,7 +80,7 @@ export default function BookingWidget({place}) {
             const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
         
             // Call your backend to save booking details
-            const bookingResponse = await axios.post('/bookings', {
+            const bookingResponse = await axios.post('https://booking-app-backend-lr4h.onrender.com/api/bookings', {
               checkIn,
               checkOut,
               numberOfGuests,
