@@ -81,6 +81,7 @@ export default function BookingWidget({place}) {
         
             // Call your backend to save booking details
             const token = localStorage.getItem('jwt'); 
+            console.log(token);
             const bookingResponse = await axios.post('https://booking-app-backend-lr4h.onrender.com/api/bookings', {
               checkIn,
               checkOut,
