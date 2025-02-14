@@ -13,14 +13,30 @@ import axios from "axios";
     async function handleLoginSubmit(ev) {
       ev.preventDefault();
       try {
-        const {data} = await axios.post('/login', {email,password, role});
-        setUser(data);
-        alert('Login successful');
-        setRedirect(true);
+          const { data } = await axios.post('/login', { email, password, role });
+          setUser(data);
+          alert('Login successful');
+          setRedirect(true);
       } catch (e) {
-        alert('Login failed');
+          // Log the full error object for debugging
+          console.error('Error object:', e);
+  
+          // Check for specific response properties
+          if (e.response) {
+              const { status, data: responseData } = e.response;
+  
+              if (status === 403 && responseData === 'Account deactivated') {
+                  alert('Your account has been deactivated. Please contact support.');
+              } else if (status === 422) {
+                  alert('Incorrect email, password, or role.');
+              } else {
+                  alert(`Login failed with error: ${responseData}`);
+              }
+          } else {
+              alert('Login failed. Please check your network connection.');
+          }
       }
-    }
+  }
   
     if (redirect) {
       return <Navigate to={'/index'} />

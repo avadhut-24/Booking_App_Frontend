@@ -80,9 +80,7 @@ export default function BookingWidget({place}) {
             const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
         
             // Call your backend to save booking details
-            const token = localStorage.getItem('jwt'); 
-            console.log(token);
-            const bookingResponse = await axios.post('https://booking-app-backend-lr4h.onrender.com/api/bookings', {
+            const bookingResponse = await axios.post('/bookings', {
               checkIn,
               checkOut,
               numberOfGuests,
@@ -95,12 +93,6 @@ export default function BookingWidget({place}) {
                 razorpay_order_id,
                 razorpay_signature,
               }, // Pass payment details to store in the backend
-            },
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`, // Attach the JWT
-                  'Content-Type': 'application/json',
-                },
             })
         
             console.log(bookingResponse);
