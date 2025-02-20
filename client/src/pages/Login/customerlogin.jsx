@@ -13,7 +13,7 @@ const customerlogin = () => {
   async function handleLoginSubmit(ev) {
     ev.preventDefault();
     try {
-        const { data } = await axios.post('/login', { email, password, role });
+        const { data } = await axios.post('/login', { email, password, role }, { withCredentials: true });
         setUser(data);
         alert('Login successful');
         setRedirect(true);
