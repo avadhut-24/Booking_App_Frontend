@@ -86,8 +86,6 @@ function App() {
         <Route path="/adminregister" element={<AdminRegsiterPage />}  />
         <Route path="/hostregister" element={<HostRegsiterPage />}  />
         <Route path="/customerregister" element={<CustomerRegsiterPage />}  />
-        {/* <Route path="/admin/index" element={<AdminIndexPage />}  />
-        <Route path="/host/index" element={<HostIndexPage/>}  /> */}
         <Route path="/index" element={<IndexPage />}  />
         <Route path="/account" element={<ProfilePage />} />
         <Route path="/place/:id" element={<PlacePage />} />
